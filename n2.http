@@ -3,6 +3,11 @@ GET http://localhost:3000/produto HTTP/1.1
 Content-Type: application/json
 ###
 
+
+GET http://localhost:3000/produto/buscapreco/15.25 HTTP/1.1
+Content-Type: application/json
+###
+
 # -=-=-= INSERT =-=-=-
 POST http://localhost:3000/produto HTTP/1.1
 Content-Type: application/json
@@ -12,7 +17,7 @@ Content-Type: application/json
     "nome_produto": "Arroz",
     "preco_produto": 5.75
 }
-###
+### 
 
 # -=-=-= UPDATE GERAL =-=-=-
 PUT http://localhost:3000/produto/1 HTTP/1.1
@@ -25,16 +30,16 @@ Content-Type: application/json
 ###
 
 # -=-=-= UPDATE NOME =-=-=-
-PUT http://localhost:3000/produto/2 HTTP/1.1
-Content-Type: application/json
+PUT http://localhost:3000/produto/nome/2 HTTP/1.1
+# Content-Type: application/json
 
 {
-    "nome_produto": "Carne",
+    "nome_produto": "Carne"
 }
 ###
 
 # -=-=-= UPDATE PRECO =-=-=-
-PUT http://localhost:3000/produto/3 HTTP/1.1
+PUT http://localhost:3000/produto/preco/3 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -46,4 +51,6 @@ Content-Type: application/json
 # CABEÇALHO (HEAD) DA REQUISIÇÃO
 DELETE http://localhost:3000/produto/3 HTTP/1.1
 Content-Type: application/json
+
+
 

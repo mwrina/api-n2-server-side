@@ -22,6 +22,26 @@ produto.all = async function (req, res)
     }
 }
 
+//MOSTRA TODOS OS PRODUTOS CADASTRADOS
+produto.busca_preco = async function (req, res)
+{
+
+    try {
+        //PARÂMETRO VINDO DO CLIENTE (ele informa o código do
+        //produto cujo cadastro será alterado)
+        let preco = req.params.preco_produto;
+
+        let sql = `SELECT * FROM produto WHERE preco_produto = ?;`
+
+        let result = await con.query(sql, [preco]);
+        
+        res.send({result});
+
+    } catch (err) {
+        console.log("Erro na consulta -> ", err);
+    }
+}
+
 //INSERIR DADOS NA TABELA PRODUTO
 produto.create = async function (req, res) {
     try {
@@ -111,7 +131,7 @@ produto.update = async function (req, res) {
 
         let produtos = req.body;
 
-        let sql = `UPDATE produto SET nome_produto, preco_produto = ? WHERE cod_produto = ?;`
+        let sql = `UPDATE produto SET nome_produto = ?, preco_produto = ? WHERE cod_produto = ?;`
 
         const values = [produtos.nome_produto, produtos.preco_produto, cod_produto];
 

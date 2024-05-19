@@ -1,7 +1,10 @@
 import express from "express";
 import {router} from "./routes/produto_routes.js"
+import cors from "cors"
 
 let server = express();
+
+server.use(cors())
 
 server.use(express.json())
 
